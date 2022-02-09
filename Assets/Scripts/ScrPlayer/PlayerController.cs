@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 5.0f;
     public float jumpHeight = 1f;   //跳跃高度
     private float gravityValue = -9.81f;
-    private Vector2 playerVelocity; //角色移动方向，判断跳跃
+    private Vector2 jumpVelocity; //角色移动方向，判断跳跃
     private Vector2 moveDirection; //输入的方向
     public bool isGround;
     void Start()
@@ -47,9 +47,9 @@ public class PlayerController : MonoBehaviour
     private void Jump()     //跳跃
     {
         if (Input.GetButtonDown("Jump"))
-            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
-        playerVelocity.y += gravityValue * Time.deltaTime;
-        cc.Move(playerVelocity * Time.deltaTime);
+            jumpVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+        jumpVelocity.y += gravityValue * Time.deltaTime;
+        cc.Move(jumpVelocity * Time.deltaTime);
     }
 
     private void AnimChange()
